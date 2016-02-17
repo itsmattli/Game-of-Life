@@ -9,13 +9,13 @@ import java.awt.Color;
  * @version 1.0
  *
  */
-public class Plant extends Space {
+public class Plant extends Occupant {
     /**
      * Creates a Plant object.
      * 
      * @param cell the Cell that the plant will occupy.
      */
     public Plant(final Cell cell) {
-        super(cell, "Plant", Color.green);
+        super(cell, Identifier.PLANT, Color.green);
     }
 }

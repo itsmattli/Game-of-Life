@@ -8,7 +8,7 @@ import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 
 /**
- * Cell panels that can be occupied by a Space object.
+ * Cell panels that can be occupied by a Occupant object.
  * 
  * @author Matthew Li
  * @version 1.0
@@ -16,7 +16,7 @@ import javax.swing.JPanel;
 public class Cell extends JPanel {
     private final Point location;
     private final World world;
-    private Space occupant;
+    private Occupant occupant;
     
     /**
      * Constructor for the cell class.
@@ -53,19 +53,19 @@ public class Cell extends JPanel {
     /**
      * Puts an occupant in the desire cell.
      * 
-     * @param space the Space object to place in the cell.
+     * @param space the Occupant object to place in the cell.
      */
-    public void placeOccupant(final Space space) {
-        occupant = space;
-        occupant.setCell(this);
+    public void placeOccupant(final Occupant occupant) {
+        this.occupant = occupant;
+        this.occupant.setCell(this);
     }
 
     /**
-     * Returns the current Space object occupying the cell.
+     * Returns the current Occupant object occupying the cell.
      * 
-     * @return Returns the Space object occupying the cell.
+     * @return Returns the Occupant object occupying the cell.
      */
-    public Space getSpace() {
+    public Occupant getOccupant() {
         return occupant;
     }
     
@@ -78,30 +78,30 @@ public class Cell extends JPanel {
     }
     
     /**
-     * Calls the Space object (a Herbivore) in current Cell to eat 
-     * the Space object (a Plant) located in another cell.
+     * Calls the Occupant object (a Herbivore) in current Cell to eat 
+     * the Occupant object (a Plant) located in another cell.
      * 
      * @param moveTo Cell with the Space object to be eaten.
      */
     public void eat(final Cell moveTo) {
-        moveTo.placeOccupant(this.getSpace());
-        moveTo.getSpace().init();
+        moveTo.placeOccupant(this.getOccupant());
+        moveTo.getOccupant().init();
         this.placeOccupant(new Empty(this));
     }
     
     /**
-     * Calls the Space object (a Herbivore) in current cell, to move
+     * Calls the Occupant object (a Herbivore) in current cell, to move
      * to an Cell occupied by another space object (Empty) and swaps
-     * the two Space object.
+     * the two Occupant object.
      * 
      * @param moveTo the Cell with the Space object to swap with
      */
     public void swapObjects(final Cell moveTo) {
-        Space temp = moveTo.getSpace();
-        moveTo.placeOccupant(this.getSpace());
+        Occupant temp = moveTo.getOccupant();
+        moveTo.placeOccupant(this.getOccupant());
         this.placeOccupant(temp);
-        moveTo.getSpace().init();
-        this.getSpace().init();
+        moveTo.getOccupant().init();
+        this.getOccupant().init();
     }
     
     /**

@@ -67,8 +67,8 @@ public class World {
      * @return Space object to be stored in the cell.
      */
     private void randomSpace(final Cell cell) {
-        Space space;
-        int gen = RandomGenerator.nextNumber(10);
+        Occupant space;
+        int gen = (int) Math.floor(Math.random() * 11);
         if (gen == 0) {
             space = new Herbivore(cell);
         } else if (gen > 3) {
@@ -98,10 +98,9 @@ public class World {
     public void takeTurn() {
         for (int row = 0; row < rows; row++) {
             for (int col = 0; col < cols; col++) {
-                if (allCells[row][col].getSpace() instanceof Herbivore 
-                        && !((Herbivore) allCells[row][col].getSpace()).getMoveStatus()) {
-                    ((Herbivore) allCells[row][col].getSpace()).setMoveStatus(true);
-                    ((Herbivore) allCells[row][col].getSpace()).move();
+                if (allCells[row][col].getOccupant().getType() == Identifier.HERBIVORE 
+                        && !((Herbivore) allCells[row][col].getOccupant()).getMoveStatus()) {
+                    ((Herbivore) allCells[row][col].getOccupant()).move();
                 }
             }
         }
@@ -114,23 +113,24 @@ public class World {
      * creates one Herbivore object at a 30% probability in a Cell with an Empty object per turn
      */
     private void growNew() {
-        int growNew = RandomGenerator.nextNumber(10);
+        int growNew = (int) Math.floor(Math.random() * 11);
         Cell check;
         boolean created = false;
         if (growNew == 0) {
             do {
-                check = getCellAt(RandomGenerator.nextNumber(
-                        getRowCount()), RandomGenerator.nextNumber(getColumnCount()));
-                if (check.getSpace() instanceof Empty) {
+                check = getCellAt((int) Math.floor(Math.random() * getRowCount()), 
+                        (int) Math.floor(Math.random() * getColumnCount()));
+                if (check.getOccupant().getType() == Identifier.EMPTY) {
                     check.placeOccupant(new Herbivore(check));
+                    ((Herbivore)check.getOccupant()).setRegrowthLife();
                     created = true;
                 }                
             } while (!created);
         } else if (growNew < 4 && growNew > 0) {
             do {
-                check = getCellAt(RandomGenerator.nextNumber(
-                        getRowCount()), RandomGenerator.nextNumber(getColumnCount()));
-                if (check.getSpace() instanceof Empty) {
+                check = getCellAt((int) Math.floor(Math.random() * getRowCount()), 
+                        (int) Math.floor(Math.random() * getColumnCount()));
+                if (check.getOccupant().getType() == Identifier.EMPTY) {
                     check.placeOccupant(new Plant(check));
                     created = true;
                 }                
@@ -138,15 +138,16 @@ public class World {
         }
     }
        
-    
     /**
-     * Resets all Herbivore objects contained in the Cells on the game board at the end of a turn.
+     * Resets the move status of all  Herbivore objects 
+     * contained in the Cells on the game board at the end of a turn.
      */
     public void resetMoves() {
         for (int row = 0; row < rows; row++) {
             for (int col = 0; col < cols; col++) {
-                if (allCells[row][col].getSpace() instanceof Herbivore) {
-                    ((Herbivore) allCells[row][col].getSpace()).setMoveStatus(false);              
+                if (allCells[row][col].getOccupant().getType() == Identifier.HERBIVORE) {
+                    ((Herbivore) allCells[row][col]
+                            .getOccupant()).setMoveStatus(false);              
                 }
             }
         }

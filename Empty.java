@@ -3,13 +3,13 @@ package gameV1;
 import java.awt.Color;
 
 /**
- * Empty Space object that can occupy a Cell. 
+ * Empty Occupant object that can occupy a Cell. 
  * Representing a Cell that is empty.
  * 
  * @author Matthew Li
  * @version 1.0
  */
-public class Empty extends Space {
+public class Empty extends Occupant {
     
     /**
      * Creates an Empty object to be stored in a Cell.
@@ -17,6 +17,6 @@ public class Empty extends Space {
      * @param cell the Cell that the empty object will be in
      */
     public Empty(final Cell cell) {
-        super(cell, "Empty", Color.white);
+        super(cell, Identifier.EMPTY, Color.white);
     }
 }

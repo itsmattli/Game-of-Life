@@ -6,13 +6,14 @@ import java.awt.Toolkit;
 import javax.swing.JFrame;
 
 /**
- * The driver class for the Game of Life simulation.
+ * Main.
  * 
- * @author Matthew Li
+ * @author BCIT
  * @version 1.0
  */
 public final class Main {
     private static final Toolkit TOOLKIT;
+    public static final int FRAMESIZE = 50;
 
     static {
         TOOLKIT = Toolkit.getDefaultToolkit();
@@ -20,17 +21,12 @@ public final class Main {
 
     private Main() {
     }
-    
-    /**
-     * The main method drives the program.
-     * @param argv Command line args
-     */
+
     public static void main(final String[] argv) {
         final GameFrame frame;
         final World world;
 
-        RandomGenerator.reset();
-        world = new World(25, 25);
+        world = new World(FRAMESIZE, FRAMESIZE);
         world.init();
         frame = new GameFrame(world);
         position(frame);
@@ -46,13 +42,7 @@ public final class Main {
         frame.setSize(size);
         frame.setLocation(centreOnScreen(size));
     }
-    
-    /**
-     * Returns Point object representing the centre of the screen.
-     * 
-     * @param size the Dimension object with the size of the frame.
-     * @return Point object to create the frame so it is centred.
-     */
+
     public static Point centreOnScreen(final Dimension size) {
         final Dimension screenSize;
 
@@ -62,19 +52,10 @@ public final class Main {
 
         screenSize = TOOLKIT.getScreenSize();
 
-        return (new Point((screenSize.width - size.width) 
-                / 2, (screenSize.height - size.height) / 2));
+        return (new Point((screenSize.width - size.width) / 2, (screenSize.height - size.height) / 2));
     }
-    
-    /**
-     * Returns dimension object relative to parameters.
-     * 
-     * @param widthPercent percentage of screen to be taken by width of frame.
-     * @param heightPercent percentage of screen to be taken by height of frame.
-     * @return returns Dimension object relative to screen size.
-     */
-    public static Dimension calculateScreenArea(
-            final float widthPercent, final float heightPercent) {
+
+    public static Dimension calculateScreenArea(final float widthPercent, final float heightPercent) {
         final Dimension screenSize;
         final Dimension area;
         final int width;
@@ -82,13 +63,11 @@ public final class Main {
         final int size;
 
         if ((widthPercent <= 0.0f) || (widthPercent > 100.0f)) {
-            throw new IllegalArgumentException("widthPercent cannot be " 
-                    + "<= 0 or > 100 - got: " + widthPercent);
+            throw new IllegalArgumentException("widthPercent cannot be " + "<= 0 or > 100 - got: " + widthPercent);
         }
 
         if ((heightPercent <= 0.0f) || (heightPercent > 100.0f)) {
-            throw new IllegalArgumentException("heightPercent cannot be " 
-                    + "<= 0 or > 100 - got: " + heightPercent);
+            throw new IllegalArgumentException("heightPercent cannot be " + "<= 0 or > 100 - got: " + heightPercent);
         }
 
         screenSize = TOOLKIT.getScreenSize();

@@ -26,7 +26,7 @@ public class GameFrame extends JFrame {
      * Initializes the layout for the game.
      */
     public void init() {
-        setTitle("Assignment 2a");
+        setTitle("Matthew Li's Game of Life");
         setLayout(new GridLayout(world.getRowCount(), world.getColumnCount()));
 
         for (int row = 0; row < world.getRowCount(); row++) {
