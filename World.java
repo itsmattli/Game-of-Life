@@ -108,34 +108,21 @@ public class World {
         growNew();
     }
     
-    /* 
+    /** 
      * Creates one Plant object at a 10% probability in a Cell with an Empty object or
-     * creates one Herbivore object at a 30% probability in a Cell with an Empty object per turn
+     * creates one Herbivore object at a 30% probability in a Cell with an Empty object per turn.
      */
-    private void growNew() {
-        int growNew = (int) Math.floor(Math.random() * 11);
+    private void growNew() {  
         Cell check;
-        boolean created = false;
-        if (growNew == 0) {
-            do {
-                check = getCellAt((int) Math.floor(Math.random() * getRowCount()), 
-                        (int) Math.floor(Math.random() * getColumnCount()));
-                if (check.getOccupant().getType() == Identifier.EMPTY) {
-                    check.placeOccupant(new Herbivore(check));
-                    ((Herbivore)check.getOccupant()).setRegrowthLife();
-                    created = true;
-                }                
-            } while (!created);
-        } else if (growNew < 4 && growNew > 0) {
-            do {
-                check = getCellAt((int) Math.floor(Math.random() * getRowCount()), 
-                        (int) Math.floor(Math.random() * getColumnCount()));
-                if (check.getOccupant().getType() == Identifier.EMPTY) {
-                    check.placeOccupant(new Plant(check));
-                    created = true;
-                }                
-            } while (!created);
-        }
+        boolean isEmpty = false;
+        do {
+            check = getCellAt((int) Math.floor(Math.random() * getRowCount()),
+                    (int) Math.floor(Math.random() *getColumnCount()));
+            if (check.getOccupant().getType() == Identifier.EMPTY) {
+                isEmpty = true;
+            }
+        } while (!isEmpty);
+        randomSpace(check);
     }
        
     /**
