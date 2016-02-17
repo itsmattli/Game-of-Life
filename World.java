@@ -96,11 +96,11 @@ public class World {
      * to allow them to move on the next turn.
      */
     public void takeTurn() {
-        for (int row = 0; row < rows; row++) {
-            for (int col = 0; col < cols; col++) {
-                if (allCells[row][col].getOccupant().getType() == Identifier.HERBIVORE 
-                        && !((Herbivore) allCells[row][col].getOccupant()).getMoveStatus()) {
-                    ((Herbivore) allCells[row][col].getOccupant()).move();
+        for (Cell[] innerArray: allCells) {
+            for (Cell element: innerArray) {
+                if (element.getOccupant().getType() == Identifier.HERBIVORE 
+                        && !((Herbivore) element.getOccupant()).getMoveStatus()) {
+                    ((Herbivore) element.getOccupant()).move();
                 }
             }
         }
@@ -116,8 +116,8 @@ public class World {
         Cell check;
         boolean isEmpty = false;
         do {
-            check = getCellAt((int) Math.floor(Math.random() * getRowCount()),
-                    (int) Math.floor(Math.random() *getColumnCount()));
+            check = getCellAt(RandomGenerator.nextNumber(getRowCount()),
+                    RandomGenerator.nextNumber(getColumnCount()));
             if (check.getOccupant().getType() == Identifier.EMPTY) {
                 isEmpty = true;
             }
@@ -130,11 +130,10 @@ public class World {
      * contained in the Cells on the game board at the end of a turn.
      */
     public void resetMoves() {
-        for (int row = 0; row < rows; row++) {
-            for (int col = 0; col < cols; col++) {
-                if (allCells[row][col].getOccupant().getType() == Identifier.HERBIVORE) {
-                    ((Herbivore) allCells[row][col]
-                            .getOccupant()).setMoveStatus(false);              
+        for (Cell[] innerArray: allCells) {
+            for (Cell element: innerArray) {
+                if (element.getOccupant().getType() == Identifier.HERBIVORE) {
+                    ((Herbivore) element.getOccupant()).setMoveStatus(false);              
                 }
             }
         }
