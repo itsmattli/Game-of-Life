@@ -116,8 +116,8 @@ public class World {
         Cell check;
         boolean isEmpty = false;
         do {
-            check = getCellAt(RandomGenerator.nextNumber(getRowCount()),
-                    RandomGenerator.nextNumber(getColumnCount()));
+            check = getCellAt((int) Math.floor(Math.random() * getRowCount()),
+                    ((int) Math.floor(Math.random() * getColumnCount()));
             if (check.getOccupant().getType() == Identifier.EMPTY) {
                 isEmpty = true;
             }
