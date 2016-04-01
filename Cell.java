@@ -1,4 +1,4 @@
-package gameV1;
+package ca.bcit.comp2526.a2b;
 
 import java.awt.Color;
 import java.awt.Point;
@@ -58,6 +58,10 @@ public class Cell extends JPanel {
     public void placeOccupant(final Occupant occupant) {
         this.occupant = occupant;
         this.occupant.setCell(this);
+    }
+    
+    public void noMoves() {
+        init();
     }
 
     /**

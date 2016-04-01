@@ -1,4 +1,4 @@
-package gameV1;
+package ca.bcit.comp2526.a2b;
 
 /**
  * World that initializes the cells and occupants of the game.
@@ -7,6 +7,41 @@ package gameV1;
  * @version 1.0
  */
 public class World {
+    
+    /**
+     * An int representing the max value to be passed to the 
+     * static nextNumber method of the RandomGenerator class 
+     * so that it will return value between 0 and 99 inclusive.
+     */
+    public static final int GENERATORMAX = 99;
+    
+    /**
+     * The number representing the lower bound that will 
+     * generate things at a 20% chance based on GENERATORMAX.
+     */
+    public static final int EIGHTY = 80;
+    
+    /**
+     * The number representing the lower bound that will 
+     * generate things at a 20% chance based on GENERATORMAX
+     * and EIGHTY.
+     */
+    public static final int SIXTY = 60;
+    
+    /**
+     * The number representing the lower bound that will 
+     * generate things at a 10% chance based on GENERATORMAX
+     * and SIXTY.
+     */
+    public static final int FIFTY = 50;
+    
+    /**
+     * The number representing the lower bound that will 
+     * generate things at a 10% chance based on GENERATORMAX
+     * and FIFTY.
+     */
+    public static final int FORTY = 40;
+    
     private final Cell[][] allCells;
     private int rows;
     private int cols;
@@ -60,7 +95,7 @@ public class World {
     }
     
     /**
-     * Creates a random Space object to occupy a Cell
+     * Creates a random Occupant object to occupy a Cell
      * based on the RandomGenerator value.
      * 
      * @param cell the Cell that will contain the Space object.
@@ -68,13 +103,17 @@ public class World {
      */
     private void randomSpace(final Cell cell) {
         Occupant space;
-        int gen = (int) Math.floor(Math.random() * 11);
-        if (gen == 0) {
+        int gen = RandomGenerator.nextNumber(GENERATORMAX);
+        if (gen >= EIGHTY) {
             space = new Herbivore(cell);
-        } else if (gen > 3) {
-            space = new Empty(cell);
-        } else {
+        } else if  (gen >= SIXTY) {
             space = new Plant(cell);
+        } else if (gen >= FIFTY) {
+            space = new Carnivore(cell);
+        } else if (gen >= FORTY) {
+            space = new Omnivore(cell);
+        } else {
+            space = new Empty(cell);
         }
         cell.placeOccupant(space);
     }
@@ -98,42 +137,40 @@ public class World {
     public void takeTurn() {
         for (Cell[] innerArray: allCells) {
             for (Cell element: innerArray) {
-                if (element.getOccupant().getType() == Identifier.HERBIVORE 
-                        && !((Herbivore) element.getOccupant()).getMoveStatus()) {
-                    ((Herbivore) element.getOccupant()).move();
+                if ((element.getOccupant() instanceof Movable) 
+                        && !((Movable) element.getOccupant()).getMoveStatus()) {
+                    ((Movable) element.getOccupant()).makeMove();
                 }
             }
         }
-        resetMoves();
         growNew();
+        resetMoves();
     }
     
     /** 
-     * Creates one Plant object at a 10% probability in a Cell with an Empty object or
-     * creates one Herbivore object at a 30% probability in a Cell with an Empty object per turn.
+     * Calls methods to check if the occupant in a Cell is eligible for reproduction.
      */
     private void growNew() {  
-        Cell check;
-        boolean isEmpty = false;
-        do {
-            check = getCellAt((int) Math.floor(Math.random() * getRowCount()),
-                    ((int) Math.floor(Math.random() * getColumnCount()));
-            if (check.getOccupant().getType() == Identifier.EMPTY) {
-                isEmpty = true;
+        for (Cell[] innerArray: allCells) {
+            for (Cell element: innerArray) {
+                if ((element.getOccupant() instanceof Birthable) 
+                        && !((Movable) element.getOccupant()).getBirthStatus()) {
+                    ((Movable) element.getOccupant()).birth();
+                }
             }
-        } while (!isEmpty);
-        randomSpace(check);
+        }
     }
        
     /**
-     * Resets the move status of all  Herbivore objects 
+     * Resets the move & birthing status of all Movable objects objects 
      * contained in the Cells on the game board at the end of a turn.
      */
-    public void resetMoves() {
+    private void resetMoves() {
         for (Cell[] innerArray: allCells) {
             for (Cell element: innerArray) {
-                if (element.getOccupant().getType() == Identifier.HERBIVORE) {
-                    ((Herbivore) element.getOccupant()).setMoveStatus(false);              
+                if (!(element.getOccupant().getType() == Identifier.EMPTY)) {
+                    ((Movable) element.getOccupant()).setMoveStatus(false);
+                    ((Movable) element.getOccupant()).setBirthStatus(false);
                 }
             }
         }

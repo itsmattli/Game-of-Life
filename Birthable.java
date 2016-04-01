@@ -1,0 +1,25 @@
+package ca.bcit.comp2526.a2b;
+
+import java.util.ArrayList;
+
+/**
+ * Interface that specifies if the class can reproduce
+ * and contains methods on reproduction.
+ * 
+ * @author Matthew Li
+ * @version 1.0
+ */
+public interface Birthable {
+    
+    /**
+     * Checks if the object is eligible for birth.
+     */
+    boolean birthCheck(final ArrayList<Cell> adjacents);
+    
+    /**
+     * Creates an offspring in a cell from the ArrayList passed in.
+     * 
+     * @param possMoves ArrayList containing the adjacent cells to the object.
+     */
+    void birth();
+}

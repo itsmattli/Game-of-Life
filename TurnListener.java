@@ -1,4 +1,4 @@
-package gameV1;
+package ca.bcit.comp2526.a2b;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -10,7 +10,7 @@ import java.awt.event.MouseEvent;
  * @version 1.0
  */
 public class TurnListener extends MouseAdapter {
-    GameFrame game;
+    private GameFrame game;
     
     /**
      * Create the listeners.

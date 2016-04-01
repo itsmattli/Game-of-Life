@@ -1,4 +1,4 @@
-package gameV1;
+package ca.bcit.comp2526.a2b;
 
 import java.awt.Color;
 

@@ -1,4 +1,4 @@
-package gameV1;
+package ca.bcit.comp2526.a2b;
 
 import java.awt.GridLayout;
 import javax.swing.JFrame;
@@ -26,7 +26,7 @@ public class GameFrame extends JFrame {
      * Initializes the layout for the game.
      */
     public void init() {
-        setTitle("Matthew Li's Game of Life");
+        setTitle("Assignment 2b");
         setLayout(new GridLayout(world.getRowCount(), world.getColumnCount()));
 
         for (int row = 0; row < world.getRowCount(); row++) {

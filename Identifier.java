@@ -1,4 +1,4 @@
-package gameV1;
+package ca.bcit.comp2526.a2b;
 
 /**
  * Enumerated types for the Occupant class.
@@ -6,5 +6,5 @@ package gameV1;
  * @author Matthew Li
  */
 public enum Identifier {
-    HERBIVORE, PLANT, EMPTY
+    HERBIVORE, PLANT, EMPTY, CARNIVORE, OMNIVORE
 }
