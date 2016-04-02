@@ -1,4 +1,4 @@
-package ca.bcit.comp2526.a2b;
+package gameV2;
 
 import java.awt.Color;
 
@@ -53,7 +53,7 @@ public abstract class Occupant {
      * Paints the Cell the appropriate typeColor.
      */
     public final void init() {
-        double maxLife = 0;
+        double maxLife = 10;
         if (!(getType() == Identifier.EMPTY)) {
             switch (getType()) {
               case PLANT:

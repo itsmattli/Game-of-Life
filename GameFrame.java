@@ -1,4 +1,4 @@
-package ca.bcit.comp2526.a2b;
+package gameV2;
 
 import java.awt.GridLayout;
 import javax.swing.JFrame;

@@ -1,4 +1,4 @@
-package ca.bcit.comp2526.a2b;
+package gameV2;
 
 import java.awt.Color;
 import java.util.ArrayList;
@@ -57,11 +57,8 @@ public class Herbivore extends Mobile implements CarnEdible, OmniEdible {
                 herbCounter++;
             } 
         }
-        if (emptyCounter >= HERBEMPTYCONDITION && foodCounter >= HERBFOODCONDITION 
-                && herbCounter >= HERBMATECONDITION) {
-            return true;
-        }
-        return false;
+        return (emptyCounter >= HERBEMPTYCONDITION && foodCounter >= HERBFOODCONDITION 
+                && herbCounter >= HERBMATECONDITION);
     }
     
     /**

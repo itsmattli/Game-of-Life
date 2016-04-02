@@ -1,4 +1,4 @@
-package ca.bcit.comp2526.a2b;
+package gameV2;
 
 /**
  * Interface that specifies if the class is edible by Herbivores.

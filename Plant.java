@@ -1,4 +1,4 @@
-package ca.bcit.comp2526.a2b;
+package gameV2;
 
 import java.awt.Color;
 import java.util.ArrayList;
@@ -63,10 +63,7 @@ public class Plant extends Movable implements HerbEdible, OmniEdible {
                 mateCounter++;
             } 
         }
-        if (emptyCounter >= PLANTEMPTYCONDITION && mateCounter >= PLANTMATECONDITION) {
-            return true;
-        }
-        return false;
+        return (emptyCounter >= PLANTEMPTYCONDITION && mateCounter >= PLANTMATECONDITION); 
     }
     
     /**

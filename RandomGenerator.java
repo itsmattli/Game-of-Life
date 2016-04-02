@@ -1,4 +1,4 @@
-package ca.bcit.comp2526.a2b;
+package gameV2;
 
 import java.util.Random;
 
@@ -13,7 +13,7 @@ public final class RandomGenerator {
      * Constant for the RandomGenerator class representing
      * the Random object used to generate Random numbers.
      */
-    public static final Random GEN = new Random();
+    private static final Random RANDOM = new Random();
     
     /**
      * Default constructor for RandomGenerator class.
@@ -29,6 +29,6 @@ public final class RandomGenerator {
      * @return Returns an int between 0 and max
      */
     public static int nextNumber(final int max) {
-        return GEN.nextInt(max);
+        return RANDOM.nextInt(max);
     }
 }

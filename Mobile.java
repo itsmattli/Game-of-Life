@@ -1,4 +1,4 @@
-package ca.bcit.comp2526.a2b;
+package gameV2;
 
 import java.awt.Color;
 import java.util.ArrayList;
@@ -40,7 +40,7 @@ public abstract class Mobile extends Movable {
         } else {
             life--;
             setMoveStatus(true);
-            cell.noMoves();
+            init();
         }
     }
     

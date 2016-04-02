@@ -1,4 +1,4 @@
-package ca.bcit.comp2526.a2b;
+package gameV2;
 
 /**
  * World that initializes the cells and occupants of the game.
@@ -130,7 +130,7 @@ public class World {
     }
     
     /**
-     * Checks all the Cells for Herbivore objects and gets them to move if
+     * Checks all the Cells for Movable objects and gets them to move if
      * they haven't already moved on this mouse click. Then calls resetMoves
      * to allow them to move on the next turn.
      */

@@ -1,4 +1,4 @@
-package ca.bcit.comp2526.a2b;
+package gameV2;
 
 import java.awt.Color;
 import java.util.ArrayList;
@@ -9,7 +9,7 @@ import java.util.ArrayList;
  * @author Matthew Li
  * @version 1.0
  */
-public class Omnivore extends Mobile implements OmniEdible {
+public class Omnivore extends Mobile {
     
     /**
      * The number of mates adjacent required for the Omnivore to give birth.
@@ -57,11 +57,8 @@ public class Omnivore extends Mobile implements OmniEdible {
                 mateCounter++;
             } 
         }
-        if (emptyCounter >= OMNIEMPTYCONDITION && foodCounter >= OMNIFOODCONDITION 
-                && mateCounter >= OMNIMATECONDITION) {
-            return true;
-        }
-        return false;
+        return (emptyCounter >= OMNIEMPTYCONDITION && foodCounter >= OMNIFOODCONDITION 
+                && mateCounter >= OMNIMATECONDITION);
     }
     
     /**

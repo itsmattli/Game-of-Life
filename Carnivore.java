@@ -1,4 +1,4 @@
-package ca.bcit.comp2526.a2b;
+package gameV2;
 
 import java.awt.Color;
 import java.util.ArrayList;
@@ -56,11 +56,8 @@ public class Carnivore extends Mobile implements OmniEdible {
                 mateCounter++;
             } 
         }
-        if (emptyCounter >= CARNEMPTYCONDITION && foodCounter >= CARNFOODCONDITION 
-                && mateCounter >= CARNMATECONDITION) {
-            return true;
-        }
-        return false;
+        return (emptyCounter >= CARNEMPTYCONDITION && foodCounter >= CARNFOODCONDITION 
+                && mateCounter >= CARNMATECONDITION);
     }
     
     /**
