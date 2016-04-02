@@ -7,7 +7,7 @@ import java.awt.Color;
  * Representing a Cell that is empty.
  * 
  * @author Matthew Li
- * @version 1.0
+ * @version 2.0
  */
 public class Empty extends Occupant {
     

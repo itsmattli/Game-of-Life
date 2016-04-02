@@ -7,9 +7,10 @@ import java.awt.Color;
  * create object that occupy cells.
  * 
  * @author Matthew Li
- * @version 1.0
+ * @version 2.0
  */
 public abstract class Occupant {
+    
     /**
      * The max value of an RGBa Channel.
      */

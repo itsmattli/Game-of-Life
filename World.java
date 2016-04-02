@@ -4,7 +4,7 @@ package gameV2;
  * World that initializes the cells and occupants of the game.
  * 
  * @author Matthew Li
- * @version 1.0
+ * @version 2.0
  */
 public class World {
     

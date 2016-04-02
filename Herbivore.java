@@ -7,7 +7,7 @@ import java.util.ArrayList;
  * A Herbivore object that can occupy a Cell.
  * 
  * @author Matthew Li
- * @version 1.0
+ * @version 2.0
  */
 public class Herbivore extends Mobile implements CarnEdible, OmniEdible {
     
@@ -57,7 +57,8 @@ public class Herbivore extends Mobile implements CarnEdible, OmniEdible {
                 herbCounter++;
             } 
         }
-        return (emptyCounter >= HERBEMPTYCONDITION && foodCounter >= HERBFOODCONDITION 
+        return (emptyCounter >= HERBEMPTYCONDITION 
+                && foodCounter >= HERBFOODCONDITION 
                 && herbCounter >= HERBMATECONDITION);
     }
     

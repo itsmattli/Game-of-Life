@@ -7,7 +7,7 @@ import java.util.ArrayList;
  * and contains methods on reproduction.
  * 
  * @author Matthew Li
- * @version 1.0
+ * @version 2.0
  */
 public interface Birthable {
     

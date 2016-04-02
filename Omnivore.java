@@ -7,7 +7,7 @@ import java.util.ArrayList;
  * A Omnivore object that can occupy a Cell.
  * 
  * @author Matthew Li
- * @version 1.0
+ * @version 2.0
  */
 public class Omnivore extends Mobile {
     
@@ -57,7 +57,8 @@ public class Omnivore extends Mobile {
                 mateCounter++;
             } 
         }
-        return (emptyCounter >= OMNIEMPTYCONDITION && foodCounter >= OMNIFOODCONDITION 
+        return (emptyCounter >= OMNIEMPTYCONDITION 
+                && foodCounter >= OMNIFOODCONDITION 
                 && mateCounter >= OMNIMATECONDITION);
     }
     

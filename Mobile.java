@@ -8,7 +8,7 @@ import java.util.ArrayList;
  * and are physically able to move.
  * 
  * @author Matthew Li
- *
+ * @version 2.0
  */
 public abstract class Mobile extends Movable {
     

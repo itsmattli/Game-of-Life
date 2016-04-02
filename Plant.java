@@ -7,8 +7,7 @@ import java.util.ArrayList;
  * Plant object that can occupy a Cell.
  * 
  * @author Matthew Li
- * @version 1.0
- *
+ * @version 2.0
  */
 public class Plant extends Movable implements HerbEdible, OmniEdible {
     
@@ -63,7 +62,8 @@ public class Plant extends Movable implements HerbEdible, OmniEdible {
                 mateCounter++;
             } 
         }
-        return (emptyCounter >= PLANTEMPTYCONDITION && mateCounter >= PLANTMATECONDITION); 
+        return (emptyCounter >= PLANTEMPTYCONDITION 
+                && mateCounter >= PLANTMATECONDITION); 
     }
     
     /**

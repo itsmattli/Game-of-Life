@@ -7,7 +7,7 @@ import java.awt.event.MouseEvent;
  * Listener class for mouse clicks.
  * 
  * @author Matthew Li
- * @version 1.0
+ * @version 2.0
  */
 public class TurnListener extends MouseAdapter {
     private GameFrame game;

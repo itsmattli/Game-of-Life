@@ -7,7 +7,7 @@ import javax.swing.JFrame;
  * Frame for the Game of Life.
  * 
  * @author Matthew Li
- * @version 1.0
+ * @version 2.0
  */
 public class GameFrame extends JFrame {
 

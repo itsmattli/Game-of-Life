@@ -11,7 +11,7 @@ import javax.swing.JPanel;
  * Cell panels that can be occupied by a Occupant object.
  * 
  * @author Matthew Li
- * @version 1.0
+ * @version 2.0
  */
 public class Cell extends JPanel {
     private final Point location;

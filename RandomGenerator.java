@@ -6,9 +6,10 @@ import java.util.Random;
  * RandomGenerator has methods to generate a sequence of numbers.
  * 
  * @author Matthew Li
- * @version 1.0
+ * @version 2.0
  */
 public final class RandomGenerator {
+    
     /**
      * Constant for the RandomGenerator class representing
      * the Random object used to generate Random numbers.
@@ -18,8 +19,7 @@ public final class RandomGenerator {
     /**
      * Default constructor for RandomGenerator class.
      */
-    private RandomGenerator() {
-        
+    private RandomGenerator() {     
     }
     
     /**

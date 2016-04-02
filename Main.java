@@ -9,7 +9,7 @@ import javax.swing.JFrame;
  * Driver class for the Game of Life.
  * 
  * @author Matthew Li
- * @version 1.0
+ * @version 2.0
  */
 public final class Main {
     

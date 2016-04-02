@@ -7,7 +7,7 @@ import java.util.ArrayList;
  * A Carnivore object that can occupy a Cell.
  * 
  * @author Matthew Li
- * @version 1.0
+ * @version 2.0
  */
 public class Carnivore extends Mobile implements OmniEdible { 
     
@@ -15,6 +15,7 @@ public class Carnivore extends Mobile implements OmniEdible {
      * The lifespan of an Carnivore born in the game and after it has eaten.
      */
     public static final int CARNLIFESPAN = 3;
+    
     /**
      * The number of mates adjacent required for the Omnivore to give birth.
      */
@@ -56,7 +57,8 @@ public class Carnivore extends Mobile implements OmniEdible {
                 mateCounter++;
             } 
         }
-        return (emptyCounter >= CARNEMPTYCONDITION && foodCounter >= CARNFOODCONDITION 
+        return (emptyCounter >= CARNEMPTYCONDITION 
+                && foodCounter >= CARNFOODCONDITION 
                 && mateCounter >= CARNMATECONDITION);
     }
     

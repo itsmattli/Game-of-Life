@@ -8,7 +8,7 @@ import java.util.ArrayList;
  * is able to take a turn in the game when the mouse is clicked.
  * 
  * @author Matthew Li
- * @version 1.0
+ * @version 2.0
  */
 public abstract class Movable extends Occupant implements Birthable {
     protected int life;
